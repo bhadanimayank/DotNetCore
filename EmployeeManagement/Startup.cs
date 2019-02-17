@@ -30,6 +30,13 @@ namespace EmployeeManagement
         {
             if (env.IsDevelopment())
             {
+                //DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions()
+                //{
+                //    SourceCodeLineCount = 10
+                //};
+
+                //app.UseDeveloperExceptionPage(developerExceptionPageOptions);
+
                 app.UseDeveloperExceptionPage();
             }
 
@@ -51,7 +58,19 @@ namespace EmployeeManagement
             //    logger.LogInformation("MW2: Outgoing Response");
             //});
 
+            //DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            //defaultFilesOptions.DefaultFileNames.Clear();
+            //defaultFilesOptions.DefaultFileNames.Add("foo.html");
+            //app.UseDefaultFiles(defaultFilesOptions);
             app.UseStaticFiles();
+
+            //FileServerOptions fileServerOptions = new FileServerOptions();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
+            //app.UseFileServer(fileServerOptions);
+
+
+            //app.UseFileServer();
 
             app.Run(async (context) =>
             {
@@ -59,7 +78,9 @@ namespace EmployeeManagement
 
                 //logger.LogInformation("MW3:Request Handled and Response Produced");
 
-                await context.Response.WriteAsync("Hello World");
+                //throw new Exception("Some error processing the request");
+
+                await context.Response.WriteAsync("Hosting Environment: " + env.EnvironmentName);
             });
         }
     }
