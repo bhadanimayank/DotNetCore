@@ -23,6 +23,7 @@ namespace EmployeeManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +63,7 @@ namespace EmployeeManagement
             //defaultFilesOptions.DefaultFileNames.Clear();
             //defaultFilesOptions.DefaultFileNames.Add("foo.html");
             //app.UseDefaultFiles(defaultFilesOptions);
+
             app.UseStaticFiles();
 
             //FileServerOptions fileServerOptions = new FileServerOptions();
@@ -72,16 +74,20 @@ namespace EmployeeManagement
 
             //app.UseFileServer();
 
-            app.Run(async (context) =>
-            {
-                //await context.Response.WriteAsync("MW3:Request Handled and Response Produced");
+            app.UseMvcWithDefaultRoute();
 
-                //logger.LogInformation("MW3:Request Handled and Response Produced");
+            //app.Run(async (context) =>
+            //{
+            //    //await context.Response.WriteAsync("MW3:Request Handled and Response Produced");
 
-                //throw new Exception("Some error processing the request");
+            //    //logger.LogInformation("MW3:Request Handled and Response Produced");
 
-                await context.Response.WriteAsync("Hosting Environment: " + env.EnvironmentName);
-            });
+            //    //throw new Exception("Some error processing the request");
+
+            //    //await context.Response.WriteAsync("Hosting Environment: " + env.EnvironmentName);
+
+            //    await context.Response.WriteAsync("Hello World");
+            //});
         }
     }
 }
