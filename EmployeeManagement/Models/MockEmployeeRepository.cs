@@ -20,6 +20,11 @@ namespace EmployeeManagement.Models
 
         }
 
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            return _employeeList;
+        }
+
         public Employee GetEmployee(int Id)
         {
             
